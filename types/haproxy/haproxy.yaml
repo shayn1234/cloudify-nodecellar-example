@@ -9,6 +9,7 @@ node_types:
   haproxy.nodes.Proxy:
     derived_from: cloudify.nodes.ApplicationServer
     properties:
+      tag: load-balncer
       frontend_port:
         description: The port for HAProxy to listen on.
         type: integer

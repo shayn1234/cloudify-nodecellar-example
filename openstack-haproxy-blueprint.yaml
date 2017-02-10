@@ -12,6 +12,23 @@ imports:
   - types/openstack-types.yaml
   - types/haproxy/haproxy.yaml
 
+node_types:
+
+  security_host_connected_to_target:
+     derived_from: cloudify.relationships.connected_to
+        target_interfaces:
+           cloudify.interfaces.relationship_lifecycle:
+           # need to create a new function in openstack_plugin to update security group
+              - start: security_topology_plugin.tasks.update_target_host_ip
+           properties:
+              direction: source to target
+        source_interfaces:
+           cloudify.interfaces.relationship_lifecycle:
+           # need to create a new function in openstack_plugin to update security group
+              - start: security_topology_plugin.tasks.update_source_host_ip
+           properties:
+              direction: target to source
+
 #####################################################################################
 # inputs section allows the user to use same
 # blueprint for creating different deployments, each one
@@ -47,6 +64,12 @@ node_templates:
       - type: node_connected_to_mongo
         target: mongod
 
+      #### Security topology (update source host ip to target securuty group)
+      - type: security_host_connected_to_target
+        target: mongod
+        properties:
+           direction: source to target
+
       ################################
       # Setting the nodejs connection
       ################################
@@ -60,6 +83,12 @@ node_templates:
 
       - type: app_connected_to_haproxy
         target: haproxy
+
+        ### Security topology (update target host ip in source security group)
+      - type: security_host_connected_to_target
+        target: haproxy
+        properties:
+           direction: target to source
 
   mongod:
     type: nodecellar.nodes.MonitoredMongoDatabase

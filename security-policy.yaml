@@ -1,0 +1,36 @@
+policy-vpn:
+  info: establish vpns between hq and cloud
+  title: vpn
+  version: 1.0.0
+  description: vpn policy
+  tags:
+    tag_a : hq
+    tag_b : aws
+
+policy-app1:
+   info: secure appnode1 to appnodeb
+   title: security groups
+   versuin: 1.0.0
+   type: policy-app
+   description: app topology mapping
+   tags:
+     tag_a: web-server
+     tag_b: database
+
+policy-app2:
+   info: secure appnode1 to appnodeb
+   title: security groups
+   versuin: 1.0.0
+   type: policy-app
+   description: app topology mapping
+   tags:
+     tag_a: load-balancer
+     tag_b: webserver
+
+
+
+
+
+
+
+

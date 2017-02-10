@@ -19,6 +19,7 @@ node_types:
   nodecellar.nodes.MongoDatabase:
     derived_from: cloudify.nodes.DBMS
     properties:
+      tag: database
       port:
         description: MongoDB port
         type: integer
@@ -86,6 +87,7 @@ node_types:
   nodecellar.nodes.NodecellarApplicationModule:
     derived_from: cloudify.nodes.ApplicationModule
     properties:
+      tag: web-server
       port:
         description: Web application port
         type: integer
