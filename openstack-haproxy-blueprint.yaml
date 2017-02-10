@@ -12,6 +12,9 @@ imports:
   - types/openstack-types.yaml
   - types/haproxy/haproxy.yaml
 
+
+
+
 node_types:
 
   security_host_connected_to_target:
@@ -101,6 +104,10 @@ node_templates:
         target: haproxy
         properties:
            direction: target to source
+
+        ##### tag version
+      - type: security_host_connected_to_target_tag_version
+        target: mongod
 
   mongod:
     type: nodecellar.nodes.MonitoredMongoDatabase
