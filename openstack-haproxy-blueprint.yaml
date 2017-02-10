@@ -29,6 +29,14 @@ node_types:
            properties:
               direction: target to source
 
+  security_host_connected_to_target_tag_version:
+     derived_from: cloudify.relationships.connected_to
+        target_interfaces:
+           cloudify.interfaces.relationship_lifecycle:
+           # need to create a new function in openstack_plugin to update security group
+                - start: security_topology_plugin.tasks.update_host_ip #both source and target
+
+
 #####################################################################################
 # inputs section allows the user to use same
 # blueprint for creating different deployments, each one
@@ -69,6 +77,10 @@ node_templates:
         target: mongod
         properties:
            direction: source to target
+
+      ##### tag version
+      - type: security_host_connected_to_target_tag_version
+        target:mongod
 
       ################################
       # Setting the nodejs connection
