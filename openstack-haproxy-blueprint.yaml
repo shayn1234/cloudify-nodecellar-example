@@ -13,6 +13,16 @@ imports:
   - types/haproxy/haproxy.yaml
 
 
+plugins:
+  security_policy_workflow_plugin:
+    executor: central_deployment_agent
+
+workflows:
+  secure_relationships_workflow: security_policy_workflow_plugin.secure_relationships
+    parameters:
+      policy:
+        description: policy file
+        type: string
 
 
 node_types:

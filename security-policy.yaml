@@ -25,7 +25,7 @@ policy-app2:
    description: app topology mapping
    tags:
      tag_a: load-balancer
-     tag_b: webserver
+     tag_b: webserverh
 
 
 

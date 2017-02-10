@@ -22,6 +22,15 @@ Nodecellar example consists of:
 - A NodeJS Server
 - A Javascript Application
 
+It includes a policy file which describes which relationships and tags to secure
+ - Each node can have a tag associated with it e.g. vpn-server, web-server or database tags
+ - There is a policy file which describes which relationships to secure
+ - There is a new workflow that goes over the relationships and consults the policy file and by going on a relation by
+   relation checks if it appears in the policy and if yes secures the relationship both on the source and the target.
+ - Securing the relationship includes vpn tunnels to vpn servers on a vpn-target relationship and security ports /
+   IP tables rules on application mapping connections inside the DC (data center) or cloud
+
+
 The first thing you'll need to do is
 [install the Cloudify CLI](http://docs.getcloudify.org/latest/intro/installation/).
 <br>
