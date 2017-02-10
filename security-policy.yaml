@@ -7,6 +7,15 @@ policy-vpn:
     tag_a : hq
     tag_b : aws
 
+policy-acess:
+   info: application access
+     title: access
+     version: 1.0.0
+     description: access policy
+     tags:
+       tag_a : hq
+       tag_b : app11
+
 policy-app1:
    info: secure appnode1 to appnodeb
    title: security groups
